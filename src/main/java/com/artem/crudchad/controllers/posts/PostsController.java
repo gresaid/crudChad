@@ -31,7 +31,8 @@ public class PostsController {
   }
 
   @GetMapping("/posts")
-  public ResponseEntity<List<Posts>> getAllPosts(@RequestParam(required = false) String title, Principal principal) {
+  public ResponseEntity<List<Posts>> getAllPosts(@RequestParam(required = false) String title,
+      Principal principal) {
     System.out.println(principal);
     try {
       List<Posts> Posts = new ArrayList<>();

@@ -1,4 +1,4 @@
-package com.artem.crudchad.controllers;
+package com.artem.crudchad.controllers.auth;
 
 import com.artem.crudchad.dto.auth.UserRegistrationRequest;
 import com.artem.crudchad.service.keycloak.KeyCloakUserService;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/users")
 @RequiredArgsConstructor
 
-public class KeyCloakRoleController {
+public class KeyCloakUserController {
 
   private final KeyCloakUserService keyCloakUserService;
   private final RoleService roleService;

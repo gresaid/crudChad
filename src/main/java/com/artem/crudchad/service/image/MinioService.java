@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class MinioService implements IMinioService {
+
   private static final Logger logger = LoggerFactory.getLogger(MinioService.class);
 
   @Value("${app.minio.bucketname}")

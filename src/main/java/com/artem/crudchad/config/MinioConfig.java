@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MinioConfig {
+
   @Value("${app.minio.credentials.name}")
   private String accessKey;
 

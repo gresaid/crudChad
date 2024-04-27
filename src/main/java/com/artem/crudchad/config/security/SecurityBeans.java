@@ -30,6 +30,7 @@ public class SecurityBeans {
     return http
         .authorizeHttpRequests(c -> c.requestMatchers(HttpMethod.GET, "/api/posts").permitAll()
             .requestMatchers(HttpMethod.POST, "/api/posts").hasRole("CUSTOMER")
+            .requestMatchers(HttpMethod.POST, "/images/upload").hasRole("CUSTOMER")
             .anyRequest().authenticated())
         .build();
   }

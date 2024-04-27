@@ -7,9 +7,11 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class ImageUploadResponse {
+
   private final String presignedUrl;
   private final String fileKey;
-  public ImageUploadResponse(ImageUploadServiceResponse uploadServiceResponse){
+
+  public ImageUploadResponse(ImageUploadServiceResponse uploadServiceResponse) {
     this.presignedUrl = uploadServiceResponse.getPreUrl();
     this.fileKey = uploadServiceResponse.getKey();
   }

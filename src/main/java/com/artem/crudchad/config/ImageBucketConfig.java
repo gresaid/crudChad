@@ -16,6 +16,7 @@ import org.springframework.core.annotation.Order;
 @RequiredArgsConstructor
 @Configuration
 public class ImageBucketConfig implements ApplicationRunner {
+
   private static final Logger logger = LoggerFactory.getLogger(ImageBucketConfig.class);
 
   private final MinioClient minioClient;
