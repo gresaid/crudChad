@@ -21,7 +21,6 @@ spring:
         provider:
           keycloak:
             issuer-uri: http://localhost:8082/realms/sandbox
-            user-name-attribute: preferred_username
         registration:
           crud-chad:
             provider: keycloak
@@ -50,6 +49,6 @@ app:
   keycloak:
     realm: sandbox
     client-id: crud-chad
-    auth-server-url: http://localhost:8082/auth
+    auth-server-url: http://localhost:8082
     credentials:
       secret: vjbYD7005JZTtGJN1yESkhzIoy9g78X8

@@ -5,7 +5,6 @@ import com.nimbusds.oauth2.sdk.util.CollectionUtils;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
 import java.util.Objects;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.resource.RealmResource;
@@ -18,12 +17,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
 public class KeyCloakUserService {
 
   @Value("${app.keycloak.realm}")
   private String realm;
-  private Keycloak keycloak;
+  private final Keycloak keycloak;
 
   public KeyCloakUserService(Keycloak keycloak) {
     this.keycloak = keycloak;
@@ -61,7 +59,7 @@ public class KeyCloakUserService {
 
 
     }
-return null;
+    return null;
 
   }
 
@@ -75,7 +73,8 @@ return null;
     UsersResource usersResource = getUsersResource();
     usersResource.get(userId).sendVerifyEmail();
   }
-  public UserResource getUserResource(String userId){
+
+  public UserResource getUserResource(String userId) {
     UsersResource usersResource = getUsersResource();
     return usersResource.get(userId);
   }

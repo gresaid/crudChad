@@ -1,4 +1,4 @@
-1) KEYCLOAK 
+1) KEYCLOAK [+-]
 2) S3 [+]
 3) Monitoring Service
 4) Nginx

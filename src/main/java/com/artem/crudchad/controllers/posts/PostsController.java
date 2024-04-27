@@ -2,6 +2,7 @@ package com.artem.crudchad.controllers.posts;
 
 import com.artem.crudchad.dao.Posts;
 import com.artem.crudchad.repository.PostRepository;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +31,8 @@ public class PostsController {
   }
 
   @GetMapping("/posts")
-  public ResponseEntity<List<Posts>> getAllPosts(@RequestParam(required = false) String title) {
+  public ResponseEntity<List<Posts>> getAllPosts(@RequestParam(required = false) String title, Principal principal) {
+    System.out.println(principal);
     try {
       List<Posts> Posts = new ArrayList<>();
 
