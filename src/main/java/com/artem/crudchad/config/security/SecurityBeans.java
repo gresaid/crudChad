@@ -1,6 +1,7 @@
 package com.artem.crudchad.config.security;
 
 
+import jakarta.annotation.Priority;
 import java.util.List;
 import java.util.stream.Stream;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
@@ -23,6 +26,23 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityBeans {
 
   @Bean
+  @Priority(0)
+  public SecurityFilterChain metricsSecurityWebFilterChain(HttpSecurity httpSecurity)
+      throws Exception {
+    return httpSecurity
+        .securityMatchers(customizer ->
+            customizer.requestMatchers("/actuator/**"))
+        .authorizeHttpRequests(customizer -> customizer.requestMatchers("/actuator/**")
+            .permitAll())
+        .oauth2ResourceServer(customizer -> customizer.jwt(Customizer.withDefaults()))
+        .csrf(CsrfConfigurer::disable)
+        .sessionManagement(
+            customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .build();
+  }
+
+  @Bean
+  @Priority(1)
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
     http.oauth2Login(Customizer.withDefaults());

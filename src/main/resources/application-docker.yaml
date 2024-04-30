@@ -2,7 +2,7 @@ spring:
   application:
     name: crudChad
   datasource:
-    url: jdbc:postgresql://localhost:5432/megacrud
+    url: jdbc:postgresql://crud-db:5432/megacrud
     username: postgres
     password: 123
   jpa:
@@ -20,7 +20,7 @@ spring:
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:8082/realms/sandbox
+            issuer-uri: http://keycloak:8082/realms/sandbox
         registration:
           crud-chad:
             provider: keycloak
@@ -33,7 +33,7 @@ spring:
               - posts
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8082/realms/sandbox
+          issuer-uri: http://keycloak:8082/realms/sandbox
 server:
   port: 8080
 
@@ -41,7 +41,7 @@ app:
   minio:
     bucketname: catalog-images
     region: eu-east
-    url: http://localhost:9000
+    url: http://minio:9000
     expiry: 3600
     credentials:
       name: minioadmin
@@ -49,7 +49,7 @@ app:
   keycloak:
     realm: sandbox
     client-id: crud-chad
-    auth-server-url: http://localhost:8082
+    auth-server-url: http://keycloak:8082
     credentials:
       secret: vjbYD7005JZTtGJN1yESkhzIoy9g78X8
 
