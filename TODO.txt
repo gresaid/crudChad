@@ -1,6 +1,6 @@
-1) KEYCLOAK [+-]
+1) KEYCLOAK [+]
 2) S3 [+]
-3) Monitoring Service
+3) Monitoring Service [+]
 4) Nginx
 5) Kafka
 6) Postfix
